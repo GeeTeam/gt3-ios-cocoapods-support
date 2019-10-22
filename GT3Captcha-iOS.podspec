@@ -7,7 +7,7 @@
 
 Pod::Spec.new do |spec|
 
-  spec.name         = "GT3Captcha"
+  spec.name         = "GT3Captcha-iOS"
   spec.version      = "0.12.6"
   spec.summary      = "极验行为验证SDK."
   spec.homepage     = "https://www.geetest.com"
