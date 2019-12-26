@@ -9,6 +9,7 @@
 #import "TableViewController.h"
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
+#import "AsyncTaskViewController.h"
 
 @interface TableViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -36,7 +37,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 3;
+    switch (section) {
+        case 0:
+            return 2;
+        case 1:
+            return 3;
+        default:
+            return 0;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -47,6 +55,10 @@
             break;
         case 1:
             cell.textLabel.text = @"Register";
+            break;
+        case 2:
+            cell.textLabel.text = @"异步任务方式集成";
+            break;
         default:
             break;
     }
@@ -85,6 +97,11 @@
                 case 1: {
                     RegisterViewController *registerVC2 = [[RegisterViewController alloc] init];
                     [self.navigationController pushViewController:registerVC2 animated:YES];
+                }
+                    break;
+                case 2: {
+                    AsyncTaskViewController *vc = [[AsyncTaskViewController alloc] init];
+                    [self.navigationController pushViewController:vc animated:YES];
                 }
                     break;
                 default:

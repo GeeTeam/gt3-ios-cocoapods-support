@@ -93,7 +93,7 @@
      *  TO-DO 从接口解析是否开启极验3.0, 并解析和配置验证参数
      *  不要重复调用, 在交互上需要处理用户的短时间内多次点击的问题
      */
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[[NSURLSessionConfiguration alloc] init]];
+    NSURLSession *session = [NSURLSession sharedSession];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:api_1]];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
@@ -103,7 +103,10 @@
                 NSString *geetest_id = [dict objectForKey:@"gt"];
                 NSString *geetest_challenge = [dict objectForKey:@"challenge"];
                 NSNumber *geetest_success = [dict objectForKey:@"success"];
-                // 不要重复调用
+#warning API DEPRECATED: -[GT3CaptchaManager configureGTest:challenge:success:withAPI2:]
+#warning 因该方法需要集成者自己控制 startGTCaptchaWithAnimated 的调用，并不是很便利而被抛弃。请使用更为安全的 registerCaptchaWithCustomAsyncTask:completion: 来自定义 API1 和 API2 的请求流程。
+#warning 参考 Demo 中的 AsyncTaskButton 及 DemoAyncTask 的示例。
+                // 不要在一次验证会话中重复调用
                 [self.manager configureGTest:geetest_id challenge:geetest_challenge success:geetest_success withAPI2:api_2];
                 [self.manager startGTCaptchaWithAnimated:YES];
             }
@@ -129,7 +132,7 @@
 - (void)gtCaptcha:(GT3CaptchaManager *)manager errorHandler:(GT3Error *)error {
     //处理验证中返回的错误
     if (error.code == -999) {
-        // 请求被意外中断, 一般由用户进行取消操作导致, 可忽略错误
+        // 请求被意外中断,一般由用户进行取消操作导致
     }
     else if (error.code == -10) {
         // 预判断时被封禁, 不会再进行图形验证
@@ -170,8 +173,7 @@
     secondaryRequest.allHTTPHeaderFields = headerFields;
     secondaryRequest.HTTPBody = [postResult dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:secondaryRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         [manager closeGTViewIfIsOpen];

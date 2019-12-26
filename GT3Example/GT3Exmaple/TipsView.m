@@ -46,6 +46,17 @@
     [view layoutTipsView];
 }
 
++ (void)removeAllTipsView {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIWindow *window = [[UIApplication sharedApplication].delegate window];
+        [window.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj isKindOfClass:[UIControl class]]) {
+                [obj removeFromSuperview];
+            }
+        }];
+    });
+}
+
 - (void)layoutTipsView {
     dispatch_async(dispatch_get_main_queue(), ^{
         UIControl *control = [[UIControl alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -60,12 +71,7 @@
 }
 
 - (void)userDidTouchControl {
-    UIWindow *window = [[UIApplication sharedApplication].delegate window];
-    [window.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:[UIControl class]]) {
-            [obj removeFromSuperview];
-        }
-    }];
+    [[self class] removeAllTipsView];
 }
 
 @end

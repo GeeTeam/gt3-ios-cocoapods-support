@@ -13,4 +13,6 @@
 + (void)showTipOnKeyWindow:(NSString *)tip;
 + (void)showTipOnKeyWindow:(NSString *)tip fontSize:(CGFloat)size;
 
++ (void)removeAllTipsView;
+
 @end
