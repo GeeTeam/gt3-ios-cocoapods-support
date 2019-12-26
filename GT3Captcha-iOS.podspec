@@ -8,11 +8,11 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "GT3Captcha-iOS"
-  spec.version      = "0.12.7"
+  spec.version      = "0.13.2"
   spec.summary      = "极验行为验证SDK."
   spec.homepage     = "https://www.geetest.com"
   spec.license      = {:type => "MIT", :file => "LICENSE"}
-  spec.author       = {"Geetest" => "wangjiawei@geetest.com"}
+  spec.author       = {"Geetest" => "xuwei@geetest.com"}
   spec.ios.deployment_target = "8.0"
 
   spec.source       = { :git => "https://github.com/GeeTeam/gt3-ios-cocoapods-support.git", :tag => spec.version }
