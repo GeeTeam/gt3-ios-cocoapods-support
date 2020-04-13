@@ -8,7 +8,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "GT3Captcha-iOS"
-  spec.version      = "0.13.4.2"
+  spec.version      = "0.13.4.3"
   spec.summary      = "极验行为验证SDK."
   spec.homepage     = "https://www.geetest.com"
   spec.license      = {:type => "MIT", :file => "LICENSE"}
@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
 
   spec.source       = { :git => "https://github.com/GeeTeam/gt3-ios-cocoapods-support.git", :tag => spec.version }
   
-  spec.frameworks = "Webkit"
+  spec.frameworks = 'WebKit'
 
   spec.vendored_frameworks = "SDK/GT3Captcha.framework"
   spec.resources = "SDK/GT3Captcha.bundle"
