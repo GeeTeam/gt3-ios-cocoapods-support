@@ -107,7 +107,8 @@
      *  不要重复调用, 在交互上需要处理用户的短时间内多次点击的问题
      */
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:api_1]];
+    NSString *newURL = [NSString stringWithFormat:@"%@?t=%.0f", api_1, [[[NSDate alloc] init]timeIntervalSince1970]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:newURL]];
     self.registerDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingOptions)0 error:&error];

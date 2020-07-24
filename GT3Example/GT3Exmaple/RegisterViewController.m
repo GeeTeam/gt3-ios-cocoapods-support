@@ -293,8 +293,8 @@
 /** 修改API1的请求 */
 - (void)gtCaptcha:(GT3CaptchaManager *)manager willSendRequestAPI1:(NSURLRequest *)originalRequest withReplacedHandler:(void (^)(NSURLRequest *))replacedHandler {
     NSMutableURLRequest *mRequest = [originalRequest mutableCopy];
-//    NSString *newURL = [NSString stringWithFormat:@"%@?t=%.0f", originalRequest.URL.absoluteString, [[[NSDate alloc] init]timeIntervalSince1970]];
-//    mRequest.URL = [NSURL URLWithString:newURL];
+    NSString *newURL = [NSString stringWithFormat:@"%@?t=%.0f", originalRequest.URL.absoluteString, [[[NSDate alloc] init]timeIntervalSince1970]];
+    mRequest.URL = [NSURL URLWithString:newURL];
     
     replacedHandler(mRequest);
 }
