@@ -45,6 +45,13 @@
 /** 背景验证 */
 @property (nonatomic, strong) UIColor *maskColor;
 
+/**
+ 自定义 api2 验证结果显示时机，默认为 NO
+ NO     - 验证弹窗显示后，在弹窗上操作验证成功后，不管 api2 具体的验证结果如何，立即显示验证成功
+ YES    - 验证弹窗显示后，在弹窗上操作验证成功后，不显示验证结果，待 api2 验证完成之后，由调用者根据 api2 结果自行显示验证结果，若 api2 验证成功，请调用 `showGTCaptchaSuccessView` 方法显示成功，若 api2 验证失败，请调用 `destroyGTView` 方法直接关闭验证弹窗
+ */
+@property (nonatomic, assign) BOOL customAPI2ResultShowOccasion;
+
 #pragma mark 基本方法
 
 /**
@@ -296,6 +303,21 @@
  * @return YES，允许打印日志 NO，禁止打印日志
  */
 + (BOOL)isLogEnabled;
+
+/**
+ * @abstract 销毁验证弹窗视图
+ */
+- (void)destroyGTView;
+
+/**
+ * @abstract 隐藏验证弹窗视图
+ */
+- (void)hideGTView;
+
+/**
+ * @abstract 显示验证成功视图
+ */
+- (void)showGTCaptchaSuccessView;
 
 @end
 
