@@ -52,6 +52,8 @@
  */
 @property (nonatomic, assign) BOOL customAPI2ResultShowOccasion;
 
+@property (nonatomic, assign) BOOL disableKeyboard;
+
 #pragma mark 基本方法
 
 /**
