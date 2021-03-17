@@ -182,6 +182,33 @@
 - (void)useGTViewWithCornerRadius:(CGFloat)cornerRadius;
 
 /**
+ @abstract 设置图形验证视图的 CALayer
+ 
+ @param layerConfigs 参数配置，请正确设置参数，SDK 会通过 KVC 的形式设置 GTView 的 Layer
+ 
+ @discussion 参数举例
+ NSMutableDictionary *layerConfigs = [NSMutableDictionary dictionary];
+ // 设置投影
+ [layerConfigs setValue:[NSValue valueWithCGSize:CGSizeMake(20, 30)] forKey:@"shadowOffset"];
+ [layerConfigs setValue:(id)[UIColor colorWithRed:1 green:0 blue:0 alpha:1].CGColor forKey:@"shadowColor"];
+ [layerConfigs setValue:@1.0 forKey:@"shadowOpacity"];
+ [layerConfigs setValue:@10.0 forKey:@"shadowRadius"];
+ // 要有投影效果，一定要将 masksToBounds 设置为 NO
+ [layerConfigs setValue:@NO forKey:@"masksToBounds"];
+ // 验证框默认有宽度为 0.5 的灰色边框，若不需要边框，可将其宽度设置为 0
+ [layerConfigs setValue:@0 forKey:@"borderWidth"];
+ [_manager useGTViewWithLayerConfigs:layerConfigs];
+ */
+- (void)useGTViewWithLayerConfigs:(NSDictionary *)layerConfigs;
+
+/**
+ @abstract 设置图形验证的 clipsToBounds 属性，SDK 默认设置为 YES
+ 
+ @param clipsToBounds 是否裁剪图形验证视图
+ */
+- (void)useGTViewWithClipsToBounds:(NSNumber *)clipsToBounds;
+
+/**
  *  @abstract 验证静态参数
  *
  *  @discussion
