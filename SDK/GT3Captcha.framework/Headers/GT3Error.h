@@ -62,6 +62,8 @@ extern NSString * const GT3ErrorDomainSpecial;
  */
 + (instancetype)errorWithDomainType:(GT3ErrorType)type originalError:(NSError *)originalError withGTDesciption:(NSString *)description;
 
+- (NSString *)errorDescription;
+
 @end
 
 NS_ASSUME_NONNULL_END
