@@ -41,7 +41,7 @@
         case 0:
             return 2;
         case 1:
-            return 3;
+            return 4;
         default:
             return 0;
     }
@@ -58,6 +58,9 @@
             break;
         case 2:
             cell.textLabel.text = @"异步任务方式集成";
+            break;
+        case 3:
+            cell.textLabel.text = @"一点即过";
             break;
         default:
             break;
@@ -102,6 +105,12 @@
                 case 2: {
                     AsyncTaskViewController *vc = [[AsyncTaskViewController alloc] init];
                     [self.navigationController pushViewController:vc animated:YES];
+                }
+                    break;
+                case 3: {
+                    LoginViewController *loginVC2 = [[LoginViewController alloc] init];
+                    loginVC2.fullpage = YES;
+                    [self.navigationController pushViewController:loginVC2 animated:YES];
                 }
                     break;
                 default:

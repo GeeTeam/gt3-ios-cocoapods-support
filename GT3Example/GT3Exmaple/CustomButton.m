@@ -14,6 +14,9 @@
 //网站主部署的二次验证的接口 (api_2)
 #define api_2 @"http://www.geetest.com/demo/gt/validate-slide"
 
+#define api_1_fullpage @"https://www.geetest.com/demo/gt/register-fullpage"
+#define api_2_fullpage @"https://www.geetest.com/demo/gt/validate-fullpage"
+
 @interface CustomButton () <GT3CaptchaManagerDelegate, GT3CaptchaManagerViewDelegate>
 
 @property (nonatomic, strong) UIActivityIndicatorView *indicatorView;
@@ -23,6 +26,8 @@
 @property (nonatomic, strong) NSString *originalTitle;
 
 @property (nonatomic, assign) BOOL titleFlag;
+
+@property (nonatomic, assign) BOOL fullpage;
 
 @end
 
@@ -38,7 +43,7 @@
 
 - (GT3CaptchaManager *)manager {
     if (!_manager) {
-        _manager = [[GT3CaptchaManager alloc] initWithAPI1:api_1 API2:api_2 timeout:5.0];
+        _manager = [[GT3CaptchaManager alloc] initWithAPI1:self.fullpage ? api_1_fullpage : api_1 API2:self.fullpage ? api_2_fullpage : api_2 timeout:5.0];
         _manager.delegate = self;
         _manager.viewDelegate = self;
         
@@ -63,6 +68,18 @@
     self = [super initWithFrame:frame];
     
     if (self) {
+        [self _init];
+        
+        [self addTarget:self action:@selector(startCaptcha) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame fulpage:(BOOL)fullpage {
+    self = [super initWithFrame:frame];
+    
+    if (self) {
+        self.fullpage = fullpage;
         [self _init];
         
         [self addTarget:self action:@selector(startCaptcha) forControlEvents:UIControlEventTouchUpInside];

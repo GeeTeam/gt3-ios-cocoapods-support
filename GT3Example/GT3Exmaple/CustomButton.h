@@ -19,6 +19,7 @@
 
 @property (nonatomic, weak) id<CaptchaButtonDelegate> delegate;
 
+- (instancetype)initWithFrame:(CGRect)frame fulpage:(BOOL)fullpage;
 - (void)startCaptcha;
 - (void)stopCaptcha;
 

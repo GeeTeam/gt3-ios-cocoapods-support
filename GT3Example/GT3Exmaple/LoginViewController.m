@@ -134,7 +134,7 @@
         [self.view addSubview:button];
     }
     else {
-        CustomButton *button = [[CustomButton alloc] initWithFrame:CGRectMake(0, 0, 260, 40)];
+        CustomButton *button = [[CustomButton alloc] initWithFrame:CGRectMake(0, 0, 260, 40) fulpage:self.fullpage];
         button.delegate = self;
         button.backgroundColor = [UIColor colorWithRed:0.3 green:0.63 blue:1.0 alpha:1.0];
         [button setClipsToBounds:YES];
