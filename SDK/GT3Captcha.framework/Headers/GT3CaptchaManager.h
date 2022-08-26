@@ -350,6 +350,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)showGTCaptchaSuccessView;
 
+
+/**
+ * @abstract 设置支持的方向
+ *
+ * @param supportOrientation UIInterfaceOrientationMask 枚举
+ */
+- (void)useGTViewWithInterfaceOrientation:(UIInterfaceOrientationMask)supportOrientation;
 @end
 
 #pragma mark - 验证代理方法
