@@ -58,6 +58,8 @@ typedef NS_ENUM(NSInteger, GT3CaptchaServiceNode) {
     GT3CaptchaServiceNodeNA,
     /** 北美谷歌云服务集群，该节点已停止使用 */
     GT3CaptchaServiceNodeNG,
+    /** 自定义服务集群 */
+    GT3CaptchaServiceNodeCustom,
     /** 默认服务集群 */
     GT3CaptchaServiceNodeDefault = GT3CaptchaServiceNodeCN
 };
