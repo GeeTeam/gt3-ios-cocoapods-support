@@ -274,6 +274,19 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)useLanguageCode:(NSString *)lang;
 
 /**
+ * @abstract 自定义服务域名，支持子路径。
+ *
+ * @discussion
+ * 需配合 `-[GT3CaptchaManager useServiceNode:GT3CaptchaServiceNodeCustom]` 使用。
+ * SDK 会内部依次发送请求到 gettype.php, get.php, ajax.php 这三个 EndPoint。
+ * 若设置了 `GT3CaptchaServiceNodeCustom` 后该数组为空，则返回 -42 错误。
+ *
+ * @param customAPIServers 自定的服务接口，格式例如
+ *                         `@[@"api.geetest.com", @"api.geevisit.com", @"api.gsensebot.com"]`。
+ */
+- (void)useCustomAPIServers:(NSArray<NSString *>*)customAPIServers;
+
+/**
  *  @abstract 切换验证服务集群节点
  *
  *  @discussion
