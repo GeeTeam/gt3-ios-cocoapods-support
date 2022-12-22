@@ -287,6 +287,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)useCustomAPIServers:(NSArray<NSString *>*)customAPIServers;
 
 /**
+ * @abstract 自定义 API 请求协议，可选 HTTP 或 HTTPS。
+ *
+ * @discussion 需配合 `-[GT3CaptchaManager disableSecurityAuthentication:disable]` 使用。
+ *
+ * @param protocol 自定的协议，可选 GT3ProtocolTypeHTTPS 或 GT3ProtocolTypeHTTP
+ */
+- (void)useRequestProtocol:(GT3Protocol)protocol;
+
+/**
  *  @abstract 切换验证服务集群节点
  *
  *  @discussion

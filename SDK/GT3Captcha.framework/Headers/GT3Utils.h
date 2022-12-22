@@ -135,6 +135,16 @@ typedef NS_ENUM(NSInteger, GT3ActivityIndicatorType) {
 };
 
 /**
+ * API 网络请求协议类型
+ */
+typedef NS_ENUM(NSInteger, GT3Protocol) {
+    /** Default to HTTPS */
+    GT3ProtocolTypeHTTPS,
+    /** HTTP */
+    GT3ProtocolTypeHTTP
+};
+
+/**
  *  验证默认回调
  */
 typedef void(^GT3CaptchaDefaultBlock)(void);
