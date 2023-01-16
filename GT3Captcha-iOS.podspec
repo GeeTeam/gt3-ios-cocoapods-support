@@ -8,7 +8,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "GT3Captcha-iOS"
-  spec.version      = "0.15.4"
+  spec.version      = "0.15.4.1"
   spec.summary      = "极验行为验证SDK."
   spec.homepage     = "https://www.geetest.com"
   spec.license      = {:type => "MIT", :file => "LICENSE"}
